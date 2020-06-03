@@ -1,0 +1,68 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body class="homebg">
+  <div class="fill">
+    <form onsubmit"Passwordcheck()" action="action.php" class="form" method="post" target="_blank" >
+      First Name:<br> <input type="text" name="firstname" id="FN" required autofocus><br><br>
+      Last Name:<br> <input type="text" name="lastname" required><br><br>
+      Phone no. :<br><input type="number" id="phone" pattern="[0-9]{10}" required><br><br>
+      Email :<br> <input type="email" name="email" required><br><br>
+      Password:<br> <input type="password" name="pass" id="Ps" required><br>
+      <p>the password must start with uppercase character.<br>
+password must include 8 characters no more no less.<br>
+password must include one digit at least.<br>
+password must include one special character like - , _ , #, & , and *.<br>
+No white spaces allowed in the password</p><br><br>
+
+  Gender :<br><br>
+  <input type="radio" id="radio" name="gender" value="male" required>
+  <label for="male">Male</label><br>
+  <input type="radio" id="radio" name="gender" value="female"required>
+  <label for="female">Female</label><br><br>
+
+  Address :<br> <input type="text" required><br><br>
+Date: <br><input type="datetime-local" name ="date" required><br><br>
+<button onclick="window.print()">Print entered info</button><br><br>
+<button type="submit" value="Submit" class="button1" onclick="Passwordcheck()">Submit</button>
+</form></div>
+<script>
+function Passwordcheck(){
+  var psw = document.getElementById("Ps").value;
+  if(psw.length!=8){
+  alert("your password must contain 8 characters");
+  return false;
+  }
+  else if (psw.search(/[0-9]/)==-1) {
+    alert("your password must contain at least one number");
+    location.reload();
+    return false;
+  }
+  else if (psw.search(/[A-Z]/i)!=0) {
+  alert("Your password must start with an uppercase character")
+  return false;
+  }
+else if (psw.search(/[-_#&*]/)==-1) {
+  alert("your password must contain at least on of these characters(-_#&*)");
+  return false;
+}
+else if (psw.search(" ")>0) {
+  alert("No spacess allowed in password");
+  return false;
+}
+  else {
+    alert("welcome");
+    window.location.assign("home.html");
+    return true;
+
+}
+}
+function radiofunc() {
+     var x = document.getElementById("radio").required;
+    document.getElementById("radio").required = true;
+  }
+
+</script>
+</body>
+</html>
